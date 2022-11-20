@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Todo list</title>
+  </head>
+  <body>
+    <div class="background">
+      <h1>ToDo List</h1>
+      <div class="main__window">
+        <form>
+          <input type="text" class="form__input" />
+          <button class="btn_add">Добавить</button>
+        </form>
+        <div class="decor__line"></div>
+        <ul class="task__list">
+          <!-- <li class="task__unit">
+            <input type="checkbox" class="input__checkbox" />
+            <p class="task__body">Content here</p>
+            <button class="task__close">❌</button>
+          </li>
+          <li class="task__unit">
+            <input type="checkbox" class="input__checkbox" />
+            <p class="task__body">Content here too</p>
+            <button class="task__close">❌</button>
+          </li> -->
+        </ul>
+        <div class="close__menu">
+          <button class="close_selected_btn">Удалить завершенные</button
+          ><button class="close__all_btn">Удалить все</button>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
