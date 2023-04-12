@@ -13,17 +13,20 @@
     />
     <title>Todo list</title>
   </head>
-  <body>
-    <div class="background">
+  <body class="body">
+    <header class="header">
       <h1>ToDo List</h1>
-      <div class="main__window">
-        <form>
-          <input type="text" class="form__input" />
-          <button class="btn_add">Добавить</button>
+      <div class="header__window">
+        <form class="header__form">
+          <input type="text" class="header__input" />
+          <button class="header__btn_add">Добавить</button>
         </form>
-        <div class="decor__line"></div>
-        <ul class="task__list">
-          <!-- <li class="task__unit">
+      </div>
+    </header>
+    <!-- <div class="decor__line"></div> -->
+    <main class="main">
+      <ul class="main__task_list">
+        <!-- <li class="main__task-unit">
             <input type="checkbox" class="input__checkbox" />
             <p class="task__body">Content here</p>
             <button class="task__close">❌</button>
@@ -33,13 +36,12 @@
             <p class="task__body">Content here too</p>
             <button class="task__close">❌</button>
           </li> -->
-        </ul>
-        <div class="close__menu">
-          <button class="close_selected_btn">Удалить завершенные</button
-          ><button class="close__all_btn">Удалить все</button>
-        </div>
+      </ul>
+      <div class="close__menu">
+        <button class="close_selected_btn">Удалить завершенные</button
+        ><button class="close__all_btn">Удалить все</button>
       </div>
-    </div>
+    </main>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
