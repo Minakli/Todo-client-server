@@ -21,13 +21,13 @@ localStorage.getItem("tasks")
 //Show tasks
 tasks.forEach((elem) => {
   createTask();
-  showTask(elem.body);
+  showTask(elem);
 });
 
 //Header btn handler
 headerBtnAdd.addEventListener("click", () => {
   createTask();
-  showTask(tasks[tasks.length - 1].body);
+  showTask(tasks[tasks.length - 1]);
 });
 //Create object task
 function createTask() {
@@ -55,7 +55,7 @@ function createTask() {
 }
 
 //Show task
-function showTask(taskText) {
+function showTask(elem) {
   const taskLi = document.createElement("li");
   taskLi.classList.add("main__task_unit");
   const taskBox = document.createElement("input");
@@ -63,7 +63,7 @@ function showTask(taskText) {
   taskBox.setAttribute("type", "checkbox");
   const taskBody = document.createElement("p");
   taskBody.classList.add("task__body");
-  taskBody.textContent = taskText;
+  taskBody.textContent = elem.body;
   const taskBtnClose = document.createElement("button");
   taskBtnClose.classList.add("task__close");
   taskBtnClose.textContent = "❌";
@@ -73,8 +73,13 @@ function showTask(taskText) {
   taskBox.addEventListener("change", () => {
     taskBody.classList.toggle("task__body_isChecked");
     taskBody.classList.toggle("task__body");
-    // if (taskBox.checked) {this.isSelected: true} else { this.isSelected: false}
-    console.log(this.isSelected);
+    if (taskBox.checked) {
+      elem.isSelected = true;
+    } else {
+      elem.isSelected = false;
+    }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log(elem.isSelected);
   });
 }
 // async function taskDrow() {

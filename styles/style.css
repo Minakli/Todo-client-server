@@ -140,6 +140,7 @@ form {
   position: relative;
   bottom: 10px;
   color: #54595e;
+  opacity: 0.5;
 }
 .task__close {
   border: none;
