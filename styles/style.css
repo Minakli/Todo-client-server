@@ -41,6 +41,9 @@ h1 {
   box-shadow: 0px 8px 35px rgba(0, 0, 0, 0.16);
   border-radius: 16px;
 }
+.header__window_with_main {
+  border-radius: 16px 16px 0 0;
+}
 form {
   display: flex;
   justify-content: space-between;
@@ -91,19 +94,13 @@ form {
 }
 .main {
   max-width: 594px;
-  /* height: 900px; */
   margin: 0 auto;
-  /* padding: 32px 0; */
   background-color: white;
   border-radius: 0 0 16px 16px;
 }
-/* .decor__line {
+.hide {
   display: none;
-  width: 100%;
-  height: 1px;
-  background-color: #dee2e6;
-  border: none;
-} */
+}
 .main__task_list {
   /* display: none; */
   margin: 0;
