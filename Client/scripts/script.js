@@ -102,7 +102,6 @@ function showTask(elem) {
     taskLi.remove();
     console.log(taskLi);
     let index = tasks.findIndex((item) => elem.id === item.id);
-    // console.log(x);
     tasks.splice(index, 1);
     localStorage.setItem("tasks", JSON.stringify(tasks));
     if (!JSON.parse(localStorage.getItem("tasks"))[0]) {
@@ -116,7 +115,6 @@ function showTask(elem) {
 closeSelectedBtn.addEventListener("click", () => {
   let forDelete = tasks.filter((item) => item.isSelected === true);
   forDelete.forEach((item) => {
-    // console.log(document.getElementById(item.id));
     document.getElementById(item.id).remove();
   });
   tasks = tasks.filter((item) => item.isSelected === false);
@@ -126,7 +124,6 @@ closeSelectedBtn.addEventListener("click", () => {
     localStorage.setItem("numId", numId);
   }
   if (!JSON.parse(localStorage.getItem("tasks"))[0]) {
-    // console.log(JSON.parse(localStorage.getItem("tasks")));
     main.classList.add("hide");
     headerWindow.classList.remove("header__window_with_main");
   }
@@ -141,50 +138,4 @@ closeAllBtn.addEventListener("click", () => {
 });
 // async function taskDrow() {
 //   let response = await fetch("http://localhost:3000");
-//   let objList = await response.json();
-//   console.log(objList);
-
-// for (let key in objList) {
-//   if (key) {
-//     let li = document.createElement("li");
-//     li.className = "task__unit";
-//     sum += 1;
-//     let getId = "li" + sum;
-//     li.id = getId;
-//     taskList.append(li);
-//     let inputCheckbox = document.createElement("input");
-//     inputCheckbox.className = "input__checkbox";
-//     inputCheckbox.setAttribute("type", "checkBox");
-//     li.append(inputCheckbox);
-//     let taskBody = document.createElement("p");
-//     taskBody.className = "task__body";
-//     taskBody.textContent = key.task;
-//     li.append(taskBody);
-//     let taskClose = document.createElement("button");
-//     taskClose.className = "task__close";
-//     taskClose.textContent = "❌";
-//     taskClose.addEventListener("click", () => {
-//       document.getElementById(getId).remove();
-//     });
-//     li.append(taskClose);
-// closeMenu.style.display = "flex";
-// formInput.value = "";
-//   }
-// }
-// }
-// btnAdd.addEventListener("click", async () => {
-//   let response = await fetch("http://localhost:3000", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({
-//       task: formInput.value,
-//       isChecked: false,
-//     }),
-//   });
-//   let data = await response.json();
-//   console.log(data);
-// taskDrow();
-// });
-// taskDrow();
+//   let objList = await response.json();}
