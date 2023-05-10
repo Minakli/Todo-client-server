@@ -13,35 +13,25 @@ const closeSelectedBtn = document.querySelector(".close_selected_btn");
 const closeAllBtn = document.querySelector(".close__all_btn");
 
 //Generator id
-// let numId = 0;
-// localStorage.getItem("numId") ? (numId = localStorage.getItem("numId")) : null;
+let numId = 0;
+localStorage.getItem("numId") ? (numId = localStorage.getItem("numId")) : null;
 
 //Cansel reload because form
 headerForm.addEventListener("submit", (event) => {
   event.preventDefault();
 });
 
-const userId = 6;
-const src = "http://24api.ru/rest-todo";
-
 //Create task array
 let tasks = [];
-// localStorage.getItem("tasks")
-//   ? (tasks = JSON.parse(localStorage.getItem("tasks")))
-//   : null;
-
-let response = await fetch(src, {
-  method: "GET",
-});
-let tasksFull = await response.json();
-tasks = tasksFull.filter((elem) => elem.userId === userId);
-console.log(tasks);
+localStorage.getItem("tasks")
+  ? (tasks = JSON.parse(localStorage.getItem("tasks")))
+  : null;
 
 //Show tasks after reload
 tasks.forEach((elem) => {
   createTask();
   showTask(elem);
-  if (tasks[0]) {
+  if (JSON.parse(localStorage.getItem("tasks"))[0]) {
     main.classList.remove("hide");
     headerWindow.classList.add("header__window_with_main");
   }
@@ -51,49 +41,36 @@ tasks.forEach((elem) => {
 headerBtnAdd.addEventListener("click", () => {
   if (headerInput.value) {
     createTask();
-    // showTask(tasks[tasks.length - 1]);
-    // headerWindow.classList.add("header__window_with_main");
-    // main.classList.remove("hide");
+    showTask(tasks[tasks.length - 1]);
+    headerWindow.classList.add("header__window_with_main");
+    main.classList.remove("hide");
   }
 });
 
 //Create object task
-async function createTask() {
-  // if (headerInput.value) {
-  let date = new Date();
-  let taskId = "task_Id_" + Math.random();
-
-  //Task object
-  let task = {
-    id: taskId,
-    name: headerInput.value,
-    isDone: 0,
-    created_at: "" + date,
-    updated_at: "" + date,
-    user_id: userId,
-  };
-  console.log(task);
-  tasks.push(task);
-  let response = await fetch(src, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(task),
-  });
-  let result = await response.json();
-  console.log(result);
-  headerInput.value = "";
-
-  console.log(tasks);
-  // }
-  showTask(tasks[tasks.length - 1]);
-  headerWindow.classList.add("header__window_with_main");
-  main.classList.remove("hide");
+function createTask() {
+  if (headerInput.value) {
+    let task = {
+      body: headerInput.value,
+      isSelected: false,
+      id: "task_Id_" + numId,
+    };
+    localStorage.getItem("numId")
+      ? (numId = localStorage.getItem("numId"))
+      : null;
+    numId++;
+    localStorage.setItem("numId", numId);
+    localStorage.getItem("tasks")
+      ? (tasks = JSON.parse(localStorage.getItem("tasks")))
+      : null;
+    tasks.push(task);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    headerInput.value = "";
+  }
 }
 
 //Show task
-async function showTask(elem) {
+function showTask(elem) {
   const taskLi = document.createElement("li");
   taskLi.classList.add("main__task_unit");
   taskLi.setAttribute("id", elem.id);
@@ -102,7 +79,7 @@ async function showTask(elem) {
   taskBox.setAttribute("type", "checkbox");
   const taskBody = document.createElement("p");
   taskBody.classList.add("task__body");
-  taskBody.textContent = elem.name;
+  taskBody.textContent = elem.body;
   const taskBtnClose = document.createElement("button");
   taskBtnClose.classList.add("task__close");
   taskBtnClose.textContent = "❌";
